@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:helloworld/clothes_on_rent.dart/cart_chat_notification.dart/clothes_cart.dart';
+import 'package:helloworld/clothes_on_rent.dart/cart_chat_notification.dart/clothes_chat.dart';
+import 'package:helloworld/clothes_on_rent.dart/splace_hom_login.dart/clothes_home.dart';
+import 'package:helloworld/clothes_on_rent.dart/splace_hom_login.dart/clothes_profile.dart';
+
+class ColothesBotomBarScreen extends StatefulWidget {
+  const ColothesBotomBarScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ColothesBotomBarScreen> createState() => _ColothesBotomBarScreenState();
+}
+
+class _ColothesBotomBarScreenState extends State<ColothesBotomBarScreen> {
+  List screen = [
+    ClothesHomeScreen(),
+    ClothesCartScreen(),
+    ClothesChatScreen(),
+    ClothesProfileScreen()
+  ];
+  int selectedIndex = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: screen[selectedIndex],
+      bottomNavigationBar: BottomNavigationBar(
+          currentIndex: selectedIndex,
+          onTap: (value) {
+            setState(() {
+              selectedIndex = value;
+            });
+          },
+          selectedItemColor: Colors.amber.shade900,
+          unselectedItemColor: Colors.grey,
+          items: [
+            BottomNavigationBarItem(icon: Icon(Icons.home), label: "Home"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart), label: "Trending"),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.chat_bubble), label: "Chat"),
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Profile")
+          ]),
+    );
+  }
+}
